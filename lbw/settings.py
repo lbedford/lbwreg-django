@@ -13,7 +13,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = '9e^_(#bpz*^kp2+2@tev(7%e57*!#!(y0=f7u3-f+gt5lc5-ab'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -21,7 +21,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    ('Liam Bedford', 'lbedford@lbedford.org'),
+    (os.getenv('ADMIN_NAME'), os.getenv('ADMIN_EMAIL')),
 )
 
 MANAGERS = ADMINS
@@ -213,11 +213,11 @@ LOGGING = {
 
 
 # EMail settings
-DEFAULT_FROM_EMAIL = 'lbw@draiocht.net'
-SERVER_EMAIL = 'django@lbwreg.draiocht.net'
+DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')
+SERVER_EMAIL = os.getenv('SERVER_EMAIL')
 
-LBW_TO_EMAIL = ['linuxbierwanderung@googlegroups.com']
-LBW_FROM_EMAIL = 'lbw@draiocht.net'
+LBW_TO_EMAIL = [os.getenv('LBW_TO_EMAIL')]
+LBW_FROM_EMAIL = os.getenv('LBW_FROM_EMAIL')
 
 DATE_FORMAT = 'Y-m-d'
 
