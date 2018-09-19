@@ -1,0 +1,6 @@
+[submodule "registration"]
+	path = registration
+	url = https://github.com/lbedford/registration.git
+[submodule "accounts"]
+	path = accounts
+	url = https://github.com/lbedford/accounts.git
