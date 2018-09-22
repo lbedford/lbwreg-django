@@ -18,8 +18,6 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG').lower() == 'true'
 
-TEMPLATE_DEBUG = DEBUG
-
 ADMINS = (
     (os.getenv('ADMIN_NAME'), os.getenv('ADMIN_EMAIL')),
 )
@@ -171,6 +169,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'debug': DEBUG,
             'loaders': [
                 ('django.template.loaders.cached.Loader', (
                     'django.template.loaders.filesystem.Loader',

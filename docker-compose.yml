@@ -23,7 +23,7 @@ services:
       DEBUG: 'TRUE'
       ADMIN_NAME: Administrator
       ADMIN_EMAIL: admin@lbw.com
-      ALLOWED_HOSTS: lbwreg.draiocht.net
+      ALLOWED_HOST: localhost
       MARIADB_USER: lbw2008
       MARIADB_PASSWORD: lbw2018
       MARIADB_HOST: db
