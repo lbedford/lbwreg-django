@@ -3,6 +3,12 @@ version: '3'
 services:
   db:
     image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: lbw
+      MYSQL_USER: lbw2008
+      MYSQL_PASSWORD: lbw2018
   web:
     build: .
     command: python3 manage.py runserver 0.0.0.0:8000
@@ -12,3 +18,16 @@ services:
       - "8000:8000"
     depends_on:
       - db
+    environment:
+      SECRET_KEY: my_secret_key
+      DEBUG: 'TRUE'
+      ADMIN_NAME: Administrator
+      ADMIN_EMAIL: admin@lbw.com
+      ALLOWED_HOSTS: lbwreg.draiocht.net
+      MARIADB_USER: lbw2008
+      MARIADB_PASSWORD: lbw2018
+      MARIADB_HOST: db
+      DEFAULT_FROM_EMAIL: admin@lbw.com
+      SERVER_EMAIL: admin@lbw.com
+      LBW_TO_EMAIL: linuxbierwanderung@googlegroups.com
+      LBW_FROM_EMAIL: test@lbw.com
