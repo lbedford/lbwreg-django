@@ -29,5 +29,5 @@ services:
       MARIADB_HOST: db
       DEFAULT_FROM_EMAIL: admin@lbw.com
       SERVER_EMAIL: admin@lbw.com
-      LBW_TO_EMAIL: linuxbierwanderung@googlegroups.com
-      LBW_FROM_EMAIL: test@lbw.com
+      LBW_TO_EMAIL: list@lbw.com
+      LBW_FROM_EMAIL: registration@lbw.com

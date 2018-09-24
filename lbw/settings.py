@@ -13,20 +13,21 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = os.getenv('SECRET_KEY', 'a_secret_key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG').lower() == 'true'
+DEBUG = os.getenv('DEBUG', 'True').lower() == 'true'
 
 ADMINS = (
-    (os.getenv('ADMIN_NAME'), os.getenv('ADMIN_EMAIL')),
+    (os.getenv('ADMIN_NAME', 'Administrator'),
+        os.getenv('ADMIN_EMAIL', 'nobody@nowhere.com')),
 )
 
 MANAGERS = ADMINS
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.4/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = [os.getenv('ALLOWED_HOST')]
+ALLOWED_HOSTS = [os.getenv('ALLOWED_HOST', 'localhost')]
 
 # Application definition
 
@@ -71,12 +72,12 @@ WSGI_APPLICATION = 'lbw.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'lbw',                      # Or path to database file if using sqlite3.
+        'NAME': os.getenv('MARIADB_DB', 'lbw'),
         'CONN_MAX_AGE': 3600,
-        'USER': os.getenv('MARIADB_USER'),
-        'PASSWORD': os.getenv('MARIADB_PASSWORD'),
-        'HOST': os.getenv('MARIADB_HOST'),                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-        'PORT': os.getenv('MARIADB_PORT', 3306),                      # Set to empty string for default.
+        'USER': os.getenv('MARIADB_USER', 'lbw'),
+        'PASSWORD': os.getenv('MARIADB_PASSWORD', 'password'),
+        'HOST': os.getenv('MARIADB_HOST', None),
+        'PORT': os.getenv('MARIADB_PORT', None),
         'OPTIONS': { 'charset': 'utf8mb4', 'sql_mode': 'TRADITIONAL',
             'init_command': 'SET '
                 'default_storage_engine=INNODB,'
@@ -212,11 +213,11 @@ LOGGING = {
 
 
 # EMail settings
-DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')
-SERVER_EMAIL = os.getenv('SERVER_EMAIL')
+DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', 'from@lbw.com')
+SERVER_EMAIL = os.getenv('SERVER_EMAIL', 'server@lbw.com')
 
-LBW_TO_EMAIL = [os.getenv('LBW_TO_EMAIL')]
-LBW_FROM_EMAIL = os.getenv('LBW_FROM_EMAIL')
+LBW_TO_EMAIL = [os.getenv('LBW_TO_EMAIL', 'to@lbw.com')]
+LBW_FROM_EMAIL = os.getenv('LBW_FROM_EMAIL', 'from@lbw.com')
 
 DATE_FORMAT = 'Y-m-d'
 
