@@ -1,0 +1,7 @@
+- run tests
+  - python manage.py test
+    (can add accounts or registration)
+- coverage
+  - coverage run --source='.' manage.py test
+  - coverage html
+    then open htmlcov/index.html in browser
