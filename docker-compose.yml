@@ -1,14 +1,16 @@
 version: '3'
 
+environment:
+  MYSQL_DATABASE: lbw
+  MYSQL_USER: lbw2008
+  MYSQL_PASSWORD: lbw2018
+
 services:
   db:
     image: mariadb
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: lbw
-      MYSQL_USER: lbw2008
-      MYSQL_PASSWORD: lbw2018
   web:
     build: .
     command: python3 manage.py runserver 0.0.0.0:8000
@@ -24,8 +26,6 @@ services:
       ADMIN_NAME: Administrator
       ADMIN_EMAIL: admin@lbw.com
       ALLOWED_HOST: localhost
-      MARIADB_USER: lbw2008
-      MARIADB_PASSWORD: lbw2018
       MARIADB_HOST: db
       DEFAULT_FROM_EMAIL: admin@lbw.com
       SERVER_EMAIL: admin@lbw.com

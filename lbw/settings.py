@@ -72,10 +72,10 @@ WSGI_APPLICATION = 'lbw.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('MARIADB_DB', 'lbw'),
+        'NAME': os.getenv('MYSQL_DATABASE', 'lbw'),
         'CONN_MAX_AGE': 3600,
-        'USER': os.getenv('MARIADB_USER', 'lbw'),
-        'PASSWORD': os.getenv('MARIADB_PASSWORD', 'password'),
+        'USER': os.getenv('MYSQL_USER', 'lbw'),
+        'PASSWORD': os.getenv('MYSQL_PASSWORD', 'password'),
         'HOST': os.getenv('MARIADB_HOST', None),
         'PORT': os.getenv('MARIADB_PORT', None),
         'OPTIONS': { 'charset': 'utf8mb4', 'sql_mode': 'TRADITIONAL',
