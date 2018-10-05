@@ -1,11 +1,8 @@
 version: '3'
 
-environment:
-  MYSQL_DATABASE: lbw
-  MYSQL_USER: lbw2008
-  MYSQL_PASSWORD: lbw2018
-
 services:
+  environment:
+
   db:
     image: mariadb
     restart: always
