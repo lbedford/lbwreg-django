@@ -106,8 +106,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
-STATIC_URL = '/static/'
-
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
@@ -116,7 +114,7 @@ STATIC_ROOT = '/var/www/content/static'
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
-STATIC_URL = '/static/'
+STATIC_URL = 'https://content.draiocht.net/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
@@ -148,7 +146,7 @@ MEDIA_ROOT = '/var/www/content/media'
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = '/media/'
+MEDIA_URL = 'https://content.draiocht.net/media/'
 
 # Templates
 

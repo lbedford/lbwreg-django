@@ -3,3 +3,4 @@ django-crispy-forms==1.6.1
 Django==1.10.7
 mysqlclient
 Pillow
+gunicorn
