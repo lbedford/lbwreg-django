@@ -217,6 +217,15 @@ SERVER_EMAIL = os.getenv('SERVER_EMAIL', 'server@lbw.com')
 LBW_TO_EMAIL = [os.getenv('LBW_TO_EMAIL', 'to@lbw.com')]
 LBW_FROM_EMAIL = os.getenv('LBW_FROM_EMAIL', 'from@lbw.com')
 
+EMAIL_HOST = os.getenv('EMAIL_HOST', '')
+
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', '')
+
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', '')
+
+EMAIL_USE_TLS = True
+
+
 DATE_FORMAT = 'Y-m-d'
 
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'
