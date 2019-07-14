@@ -191,7 +191,7 @@ LOGGING = {
     'filters': {
         'require_debug_false': {
             '()': 'django.utils.log.RequireDebugFalse'
-        }
+        },
         'require_debug_true': {
             '()': 'django.utils.log.RequireDebugTrue'
         }
@@ -209,11 +209,6 @@ LOGGING = {
             'filters': ['require_debug_false'],
             'class': 'logging.StreamHandler',
         },
-        'django.server': {
-            'level': 'INFO',
-            'class': 'logging.StreamHandler',
-            'formatter': 'django.server',
-        },
         'mail_admins': {
             'level': 'ERROR',
             'filters': ['require_debug_false'],
@@ -226,11 +221,6 @@ LOGGING = {
             'level': 'INFO',
             'propagate': True,
         },
-        'django.server': {
-            'handlers': ['django.server'],
-            'level': 'INFO',
-            'propagate': False,
-        }
     }
 }
 
