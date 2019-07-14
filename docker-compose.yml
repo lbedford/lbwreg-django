@@ -14,6 +14,7 @@ services:
   web:
     build: .
     command: python3 manage.py runserver 0.0.0.0:8000
+    restart: always 
     volumes:
       - .:/code
     ports:
@@ -34,3 +35,4 @@ services:
       SERVER_EMAIL: admin@lbw.com
       LBW_TO_EMAIL: list@lbw.com
       LBW_FROM_EMAIL: registration@lbw.com
+      EMAIL_HOST: mail.lbedford.org
