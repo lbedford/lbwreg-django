@@ -4,3 +4,4 @@ Django==1.10.7
 mysqlclient
 Pillow
 gunicorn
+pytz
