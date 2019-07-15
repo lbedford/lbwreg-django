@@ -73,7 +73,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': os.getenv('MYSQL_DATABASE', 'lbw'),
-        'CONN_MAX_AGE': 3600,
+        'CONN_MAX_AGE': int(os.getenv('DB_CONN_MAX_AGE', 0)),
         'USER': os.getenv('MYSQL_USER', 'lbw'),
         'PASSWORD': os.getenv('MYSQL_PASSWORD', 'password'),
         'HOST': os.getenv('MARIADB_HOST', None),
