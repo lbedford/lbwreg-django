@@ -31,10 +31,10 @@ services:
       MYSQL_DATABASE: lbw
       MYSQL_USER: lbw2008
       MYSQL_PASSWORD: lbw2018
-      DEFAULT_FROM_EMAIL: lbedford@lbedford.org
-      SERVER_EMAIL: lbedford@lbedford.org
-      LBW_TO_EMAIL: lbedford@lbedford.org
-      LBW_FROM_EMAIL: lbedford@lbedford.org
+      DEFAULT_FROM_EMAIL: use@domain.com
+      SERVER_EMAIL: user@domain.com
+      LBW_TO_EMAIL: user@domain.com
+      LBW_FROM_EMAIL: user@domain.com
       EMAIL_CONSOLE_BACKEND: 'True'
       EMAIL_HOST: mail.computer.com
       EMAIL_PORT: 587
