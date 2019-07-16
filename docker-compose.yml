@@ -26,13 +26,17 @@ services:
       DEBUG: 'TRUE'
       ADMIN_NAME: Administrator
       ADMIN_EMAIL: admin@lbw.com
-      ALLOWED_HOST: localhost
+      ALLOWED_HOSTS: localhost lbwreg.test.lbedford.org
       MARIADB_HOST: db
       MYSQL_DATABASE: lbw
       MYSQL_USER: lbw2008
       MYSQL_PASSWORD: lbw2018
-      DEFAULT_FROM_EMAIL: admin@lbw.com
-      SERVER_EMAIL: admin@lbw.com
-      LBW_TO_EMAIL: list@lbw.com
-      LBW_FROM_EMAIL: registration@lbw.com
-      EMAIL_HOST: mail.lbedford.org
+      DEFAULT_FROM_EMAIL: lbedford@lbedford.org
+      SERVER_EMAIL: lbedford@lbedford.org
+      LBW_TO_EMAIL: lbedford@lbedford.org
+      LBW_FROM_EMAIL: lbedford@lbedford.org
+      EMAIL_CONSOLE_BACKEND: 'True'
+      EMAIL_HOST: mail.computer.com
+      EMAIL_PORT: 587
+      EMAIL_HOST_USER: email_user
+      EMAIL_HOST_PASSWORD: password
