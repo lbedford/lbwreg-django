@@ -1,6 +1,6 @@
 django-health-check==3.0.0
 django-crispy-forms==1.6.1
-Django==1.10.7
+Django==1.11.22
 mysqlclient
 Pillow
 gunicorn
