@@ -20,7 +20,7 @@ DEBUG = os.getenv('DEBUG', 'True').lower() == 'true'
 
 ADMINS = (
     (os.getenv('ADMIN_NAME', 'Administrator'),
-        os.getenv('ADMIN_EMAIL', 'nobody@nowhere.com')),
+     os.getenv('ADMIN_EMAIL', 'nobody@nowhere.com')),
 )
 
 MANAGERS = ADMINS
@@ -51,7 +51,7 @@ INSTALLED_APPS = (
     'registration',
 )
 
-MIDDLEWARE  = [
+MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -72,18 +72,18 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': os.getenv('MYSQL_DATABASE', 'lbw'),
-        'CONN_MAX_AGE': int(os.getenv('DB_CONN_MAX_AGE', 0)),
+        'CONN_MAX_AGE': int(os.getenv('DB_CONN_MAX_AGE', "0")),
         'USER': os.getenv('MYSQL_USER', 'lbw'),
         'PASSWORD': os.getenv('MYSQL_PASSWORD', 'password'),
         'HOST': os.getenv('MARIADB_HOST', None),
         'PORT': os.getenv('MARIADB_PORT', None),
-        'OPTIONS': { 'charset': 'utf8mb4', 'sql_mode': 'TRADITIONAL',
-            'init_command': 'SET '
-                'default_storage_engine=INNODB,'
-                'character_set_connection=utf8mb4,'
-                'collation_connection=utf8mb4_bin;'
-                'SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED',
- },
+        'OPTIONS': {'charset': 'utf8mb4', 'sql_mode': 'TRADITIONAL',
+                    'init_command': 'SET '
+                                    'default_storage_engine=INNODB,'
+                                    'character_set_connection=utf8mb4,'
+                                    'collation_connection=utf8mb4_bin;'
+                                    'SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED',
+                    },
     }
 }
 
@@ -114,9 +114,9 @@ STATIC_ROOT = '/var/www/content/static'
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
 if DEBUG:
-  STATIC_URL = '/static/'
+    STATIC_URL = '/static/'
 else:
-  STATIC_URL = 'https://content.draiocht.net/static/'
+    STATIC_URL = 'https://content.draiocht.net/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
@@ -130,7 +130,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # old settings ===================
@@ -149,16 +149,16 @@ MEDIA_ROOT = '/var/www/content/media'
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
 if DEBUG:
-  MEDIA_URL = '/media/'
+    MEDIA_URL = '/media/'
 else:
-  MEDIA_URL = 'https://content.draiocht.net/media/'
+    MEDIA_URL = 'https://content.draiocht.net/media/'
 
 # Templates
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 TEMPLATES = [
-    {   
+    {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [],
         'OPTIONS': {
@@ -178,11 +178,12 @@ TEMPLATES = [
                 ('django.template.loaders.cached.Loader', (
                     'django.template.loaders.filesystem.Loader',
                     'django.template.loaders.app_directories.Loader',)), ],
-            'string_if_invalid': 'Undefined variable used, please file a bug at <a href="http://github.com/lbedford/lbwreg.django">github</a>',
+            'string_if_invalid': ('Undefined variable used, please file a bug at '
+                                  '<a href="http://github.com/lbedford/lbwreg.django">'
+                                  'github</a>'),
         },
     },
 ]
-
 
 
 # A sample logging configuration. The only tangible logging
@@ -231,7 +232,7 @@ LOGGING = {
 
 # EMail settings
 if os.getenv('EMAIL_CONSOLE_BACKEND', 'False').lower() == 'true':
-  EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', 'from@lbw.com')
 SERVER_EMAIL = os.getenv('SERVER_EMAIL', 'server@lbw.com')
@@ -247,11 +248,11 @@ EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', '')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', '')
 
 if EMAIL_PORT == 465:
-  EMAIL_USE_TLS = False
-  EMAIL_USE_SSL = True
+    EMAIL_USE_TLS = False
+    EMAIL_USE_SSL = True
 elif EMAIL_PORT == 587:
-  EMAIL_USE_TLS = True
-  EMAIL_USE_SSL = False
+    EMAIL_USE_TLS = True
+    EMAIL_USE_SSL = False
 
 
 DATE_FORMAT = 'Y-m-d'
@@ -261,3 +262,25 @@ TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 # deployment settings for https
 CSRF_COOKIE_SECURE = not DEBUG
 SESSION_COOKIE_SECURE = not DEBUG
+
+# settings.py
+
+
+class InvalidVarException(object):
+    """Invalid vars debugging."""
+    def __mod__(self, missing):
+        try:
+            missing_str = str(missing)
+        except Exception:
+            missing_str = 'Failed to create string representation'
+        raise Exception('Unknown template variable %r %s' %
+                        (missing, missing_str))
+
+    def __contains__(self, search):
+        if search == '%s':
+            return True
+        return False
+
+
+TEMPLATE_DEBUG = DEBUG
+TEMPLATE_STRING_IF_INVALID = InvalidVarException()
