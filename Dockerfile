@@ -8,8 +8,8 @@ RUN mkdir $PROJECT_ROOT
 RUN mkdir -p /var/www/content
 WORKDIR $PROJECT_ROOT
 
-ADD . $PROJECT_ROOT/
 RUN apt update && apt install -y build-essential libmariadb-dev && apt clean
+ADD . $PROJECT_ROOT/
 RUN pip install -r requirements.txt
 
 CMD /app/startup.sh
