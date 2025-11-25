@@ -1,4 +1,4 @@
-FROM python:3.7
+FROM python:3.10
 LABEL maintainer="lbedford@lbedford.org"
 
 ENV PROJECT_ROOT /app
